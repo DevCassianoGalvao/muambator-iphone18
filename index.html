@@ -399,8 +399,28 @@
   }
 
   @media (max-width:860px){
-    .fcards{position:static;display:flex;gap:10px;justify-content:center;margin:16px auto 0;max-width:440px;}
-    .fcard{position:static;flex:1 1 0;min-width:0;justify-content:center;}
+    .fcards{
+      position:static;
+      display:flex;
+      gap:10px;
+      justify-content:center;
+      margin:20px auto 0;
+      max-width:380px;
+    }
+    .fcard{
+      position:static;
+      flex:1 1 0;
+      min-width:0;
+      align-items:center;
+      justify-content:center;
+      gap:7px;
+      padding:10px 12px;
+      border-radius:999px;
+      box-shadow:0 4px 14px rgba(17,17,19,.07);
+    }
+    .fcard svg{width:16px;height:16px;margin-top:0;}
+    .fcard strong{font-size:13px;white-space:nowrap;letter-spacing:-.01em;}
+    .fcard span span{display:none;}
     .hero-visual{flex-direction:column;align-items:center;}
   }
 
@@ -409,9 +429,9 @@
     .reserva h2{font-size:28px;}
     .form-card{padding:20px;}
     .cta{width:100%;justify-content:center;}
-    .fcards{max-width:400px;gap:8px;}
-    .fcard{padding:11px 12px;gap:8px;}
-    .fcard strong{font-size:14px;}
+    .fcards{max-width:360px;gap:8px;}
+    .fcard{padding:9px 10px;}
+    .fcard strong{font-size:12.5px;}
   }
 
   @media (max-width:400px){
