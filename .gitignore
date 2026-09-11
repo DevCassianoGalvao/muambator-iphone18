@@ -1,0 +1,7 @@
+# arquivos-fonte / referências (não vão pro deploy)
+_originais/
+
+# SO
+Thumbs.db
+Desktop.ini
+.DS_Store
