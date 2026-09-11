@@ -174,7 +174,7 @@
     position:absolute;
     pointer-events:auto;
     display:flex;
-    align-items:center;
+    align-items:flex-start;
     gap:10px;
     padding:12px 15px;
     background:var(--surface);
@@ -196,7 +196,7 @@
     color:var(--ink-soft);
   }
 
-  .fcard svg{flex:none;color:var(--blue);}
+  .fcard svg{flex:none;color:var(--blue);margin-top:1px;}
 
   .fcard--a{top:44px;left:-10px;}
   .fcard--c{bottom:40px;right:-10px;}
@@ -409,8 +409,9 @@
     .reserva h2{font-size:28px;}
     .form-card{padding:20px;}
     .cta{width:100%;justify-content:center;}
-    .fcards{flex-direction:column;max-width:340px;}
-    .fcard{width:100%;justify-content:flex-start;}
+    .fcards{max-width:400px;gap:8px;}
+    .fcard{padding:11px 12px;gap:8px;}
+    .fcard strong{font-size:14px;}
   }
 
   @media (max-width:400px){
