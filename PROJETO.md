@@ -235,3 +235,8 @@ copy e os assets (logo + imagem do produto) dentro, e me passe junto este
 `PROJETO.md` (ou só diga "é como o projeto Muambator, segue o
 `PROJETO.md`"). Com a copy da nova empresa eu preencho a seção 6 deste
 checklist e replico a mesma estrutura de `index.html`.
+
+Ver também [`AJUSTES.md`](AJUSTES.md) — lições e variações reais aplicadas
+na primeira réplica (Mano Phone): fonte diferente, cor extraída do logo,
+remoção dos floating cards, fundo azul na seção do formulário, e troca do
+FormSubmit por Google Sheets via Apps Script.
