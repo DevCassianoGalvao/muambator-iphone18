@@ -21,11 +21,12 @@ google-apps-script.js script da planilha de leads (Google Sheets)
 
 ### Pendente
 
-- Colar a URL da implantação do Apps Script em `index.html`
-  (`var SHEET_URL = 'COLE_AQUI_A_URL_DO_APPS_SCRIPT/exec';`).
-- A planilha não tem coluna para Cidade / Troca / Aparelho, então esses
-  dados são coletados no formulário mas não gravados hoje. Se quiser
-  guardar também, é só avisar: acrescenta as colunas e ajusta o script.
+- Na planilha, criar as colunas **Cidade | Troca | Aparelho** logo depois
+  de "Armazenamento" (o `index.html` e o `google-apps-script.js` já
+  mandam e gravam esses 3 campos).
+- No Apps Script, colar a versão atual de `google-apps-script.js` e
+  **implantar como nova versão** da implantação existente (editar o
+  código sozinho não atualiza a URL já publicada).
 
 ## Publicar
 

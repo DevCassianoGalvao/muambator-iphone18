@@ -557,7 +557,7 @@
   var $      = function(id){ return document.getElementById(id); };
   var nome   = $('f-nome'), whats = $('f-whats'), email = $('f-email'),
       cidade = $('f-cidade'), modelo = $('f-modelo');
-  var trocaSim = $('troca-sim'), trocaNao = $('troca-nao');
+  var trocaSim = $('troca-sim'), trocaNao = $('troca-nao'), aparelho = $('f-aparelho');
   var btn = $('btn-submit'), errorMsg = $('form-error');
   var card = $('form-card'), success = $('form-success');
   var honey = $('f-honey');
@@ -649,9 +649,12 @@
       nome: nome.value,
       whats: whats.value,
       email: email.value,
+      cidade: cidade.value,
       modelo: modelo.value,
       cor: a.cor ? a.cor.value : '',
-      armazenamento: a.arm ? a.arm.value : ''
+      armazenamento: a.arm ? a.arm.value : '',
+      troca: trocaSim.checked ? 'Sim' : (trocaNao.checked ? 'Não' : ''),
+      aparelho: trocaSim.checked ? aparelho.value : ''
     };
 
     // mode:'no-cors' -> não dá pra ler a resposta do Apps Script; a tela de
