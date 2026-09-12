@@ -411,11 +411,8 @@
     <div class="form-card" id="form-card">
       <form id="reserva-form">
 
-        <!-- FormSubmit (ocultos) -->
-        <input type="hidden" name="_subject" value="Novo Lead - iPhone 18 | Muambator">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+        <!-- honeypot anti-spam: campo invisível pra humano, bot preenche -->
+        <input type="text" id="f-honey" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
 
         <div class="field step" id="s-nome">
           <label for="f-nome">Nome completo</label>
@@ -563,9 +560,11 @@
   var trocaSim = $('troca-sim'), trocaNao = $('troca-nao');
   var btn = $('btn-submit'), errorMsg = $('form-error');
   var card = $('form-card'), success = $('form-success');
+  var honey = $('f-honey');
 
-  // TEMP: e-mail de destino provisório. Trocar pelo e-mail definitivo da Muambator.
-  var DESTINO = 'cassianogalvao2020@gmail.com';
+  // Cole aqui a URL da implantação do Apps Script (termina em /exec).
+  // Ver PROJETO.md / AJUSTES.md — seção "Integração com Google Sheets".
+  var SHEET_URL = 'COLE_AQUI_A_URL_DO_APPS_SCRIPT/exec';
 
   $('year').textContent = new Date().getFullYear();
 
@@ -632,18 +631,36 @@
 
   form.addEventListener('submit', function(e){
     e.preventDefault();
+
+    // honeypot: campo escondido do humano. Se veio preenchido, foi bot —
+    // finge sucesso e não gasta uma linha da planilha com spam.
+    if(honey.value !== ''){
+      card.hidden = true;
+      success.hidden = false;
+      return;
+    }
+
     errorMsg.hidden = true;
     btn.disabled = true;
     btn.textContent = 'Enviando...';
 
-    fetch('https://formsubmit.co/ajax/' + DESTINO, {
+    var a = activeSelects();
+    var payload = {
+      nome: nome.value,
+      whats: whats.value,
+      email: email.value,
+      modelo: modelo.value,
+      cor: a.cor ? a.cor.value : '',
+      armazenamento: a.arm ? a.arm.value : ''
+    };
+
+    // mode:'no-cors' -> não dá pra ler a resposta do Apps Script; a tela de
+    // sucesso aparece já no envio (falha real do script não passa pelo catch).
+    fetch(SHEET_URL, {
       method: 'POST',
-      headers: { 'Accept': 'application/json' },
-      body: new FormData(form)
-    })
-    .then(function(resp){
-      if(!resp.ok){ throw new Error('Falha no envio'); }
-      return resp.json();
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(payload)
     })
     .then(function(){
       card.hidden = true;

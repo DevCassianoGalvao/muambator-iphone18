@@ -171,6 +171,7 @@ existem, quais variações cada um tem, e se existe algum "campo que só
 aparece dependendo de outra resposta" equivalente ao da troca.
 
 ### 5.3 Envio
+Padrão original (o mais simples pra uma primeira versão, sem backend):
 `fetch` em AJAX pro FormSubmit (`https://formsubmit.co/ajax/<email>`), sem
 sair da página. Em caso de sucesso, esconde o `.form-card` e mostra o
 `.success`. Em caso de erro, mostra uma mensagem e reabilita o botão.
@@ -180,6 +181,14 @@ envio por um link que chega no e-mail de destino — sem isso os envios
 seguintes não chegam. Tem também os campos ocultos de configuração
 (`_subject`, `_template`, `_captcha`, e um campo "honeypot" anti-spam)
 que devem ir junto no formulário novo.
+
+> **Nota:** a própria página da Muambator já não usa mais esse padrão — foi
+> trocada por envio direto pro Google Sheets via Apps Script (mesma
+> integração descrita no `AJUSTES.md`, seção 6). Ver `google-apps-script.js`
+> na raiz do projeto e o `SHEET_URL` no `<script>` do `index.html`. Pra uma
+> empresa nova, escolha um dos dois: FormSubmit (mais rápido de montar, vira
+> e-mail) ou Sheets (fica tudo organizado em planilha, exige o passo a passo
+> de implantação do Apps Script).
 
 ## 6. O que trocar para a próxima empresa (checklist)
 
